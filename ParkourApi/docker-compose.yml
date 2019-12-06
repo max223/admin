@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: parkour_api
+    environment:
+      - APPLICATION_PORT=3310
+      - DATABASE_URL=postgres://parkour:parkour@host.docker.internal:5432/parkour_development
+      - DATABASE_SSL=false
+      - FOREST_AUTH_SECRET=eca6f38dd58c13167742f5e5b3a79e1dec0334df141f8e98af33aef7af7c51512ab24357bcc13aee998c6afc253233a9
+      - FOREST_ENV_SECRET=ab9f28eae2a4e730a7606f02861de7f86ec3841561e6350746e00b4ad3b63824
+    ports:
+      - "3310:3310"
+    volumes:
+      - ./:/usr/src/app
